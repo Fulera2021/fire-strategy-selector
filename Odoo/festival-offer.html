@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Festive Special — Flat 20% OFF | FIRE in India</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    /* -------------------------------------------------------------
+       FESTIVE PROMOTION THEME: FIRE IN INDIA (GOLD & FIRE LUXURY)
+       ------------------------------------------------------------- */
+    :root {
+      --bg-dark: #070913;
+      --bg-card: rgba(18, 22, 38, 0.78);
+      --bg-card-hover: rgba(28, 34, 58, 0.9);
+      --gold-primary: #f59e0b;
+      --gold-light: #fbbf24;
+      --gold-gradient: linear-gradient(135deg, #ffd700 0%, #f59e0b 50%, #d97706 100%);
+      --fire-gradient: linear-gradient(135deg, #ff4d4d 0%, #f59e0b 50%, #ffd000 100%);
+      --text-white: #ffffff;
+      --text-muted: #cbd5e1;
+      --text-dim: #94a3b8;
+      --border-gold: rgba(245, 158, 11, 0.35);
+      --border-card: rgba(255, 255, 255, 0.1);
+      --shadow-gold: 0 10px 40px -10px rgba(245, 158, 11, 0.45);
+      --radius-lg: 24px;
+      --radius-md: 14px;
+      --radius-sm: 8px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+
+    /* Ambient Festive Glowing Background */
+    .ambient-glow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    .glow-orb-1 {
+      position: absolute;
+      top: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.22) 0%, rgba(220, 38, 38, 0.1) 45%, transparent 70%);
+      filter: blur(60px);
+      animation: pulseGlow 7s ease-in-out infinite alternate;
+    }
+
+    .glow-orb-2 {
+      position: absolute;
+      bottom: -15%;
+      right: 10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(234, 88, 12, 0.18) 0%, transparent 65%);
+      filter: blur(50px);
+    }
+
+    .glow-orb-3 {
+      position: absolute;
+      bottom: -10%;
+      left: 10%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.15) 0%, transparent 65%);
+      filter: blur(50px);
+    }
+
+    #sparkleCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    /* Container */
+    .festive-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    /* Main Festive Card */
+    .festive-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--radius-lg);
+      padding: 44px 36px;
+      box-shadow: 0 25px 70px -15px rgba(0, 0, 0, 0.7), 0 0 30px rgba(245, 158, 11, 0.15);
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    /* Decorative Golden Corner Flourishes */
+    .festive-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, transparent, #f59e0b, #ef4444, #fbbf24, #f59e0b, transparent);
+      box-shadow: 0 0 15px #f59e0b;
+    }
+
+    /* Top Brand & Festive Badge */
+    .top-badge-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 8px 18px;
+      border-radius: 50px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 24px;
+      box-shadow: 0 0 15px rgba(245, 158, 11, 0.2);
+      animation: floatBadge 3s ease-in-out infinite alternate;
+    }
+
+    .top-badge-row .diya-icon {
+      font-size: 1.15rem;
+    }
+
+    /* Festive Diya Header Graphic */
+    .festive-diya-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 24px;
+      margin-bottom: 12px;
+    }
+
+    .diya-svg {
+      width: 48px;
+      height: 48px;
+      filter: drop-shadow(0 0 12px rgba(251, 191, 36, 0.8));
+    }
+
+    .diya-svg.left {
+      transform: scaleX(-1);
+    }
+
+    .flame-animation {
+      animation: flicker 1.8s ease-in-out infinite alternate;
+      transform-origin: 50% 60%;
+    }
+
+    /* Headings */
+    .festival-title {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: 0.5px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 10%, #ffd700 45%, #ffb703 70%, #ff6b35 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 30px rgba(245, 158, 11, 0.3);
+    }
+
+    .festival-subtitle {
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 680px;
+      margin: 0 auto 32px;
+      line-height: 1.6;
+      font-weight: 400;
+    }
+
+    .festival-subtitle strong {
+      color: #f8fafc;
+      font-weight: 600;
+    }
+
+    /* 20% DISCOUNT HERO BANNER */
+    .discount-showcase {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      margin-bottom: 34px;
+      padding: 10px;
+    }
+
+    .discount-big-text {
+      font-family: 'Cinzel', serif;
+      font-size: 5.2rem;
+      font-weight: 900;
+      line-height: 0.95;
+      background: var(--gold-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 6px 20px rgba(245, 158, 11, 0.45));
+      letter-spacing: -1px;
+    }
+
+    .discount-label {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #fff;
+      background: linear-gradient(90deg, #ef4444, #f59e0b);
+      padding: 6px 24px;
+      border-radius: 30px;
+      margin-top: -10px;
+      box-shadow: 0 4px 16px rgba(239, 68, 68, 0.45);
+    }
+
+    /* COUPON BOX */
+    .coupon-section {
+      background: rgba(10, 14, 26, 0.7);
+      border: 1px dashed var(--gold-light);
+      border-radius: var(--radius-md);
+      padding: 20px 28px;
+      max-width: 480px;
+      margin: 0 auto 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
+    .coupon-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--gold-light);
+      font-weight: 700;
+    }
+
+    .coupon-interactive-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .coupon-code-pill {
+      font-family: monospace;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: 3px;
+      color: #ffd700;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      padding: 8px 20px;
+      border-radius: var(--radius-sm);
+      user-select: all;
+    }
+
+    .btn-copy {
+      background: var(--gold-gradient);
+      color: #070913;
+      border: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+    }
+
+    .btn-copy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 158, 11, 0.5);
+      filter: brightness(1.1);
+    }
+
+    .btn-copy:active {
+      transform: translateY(0);
+    }
+
+    .copied-toast {
+      font-size: 0.8rem;
+      color: #10b981;
+      font-weight: 600;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 4px;
+    }
+
+    /* COUNTDOWN TIMER */
+    .timer-container {
+      margin-bottom: 34px;
+    }
+
+    .timer-label {
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+
+    .timer-grid {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .timer-block {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-md);
+      min-width: 78px;
+      padding: 12px 8px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .timer-num {
+      font-family: 'Cinzel', serif;
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--gold-light);
+      line-height: 1;
+    }
+
+    .timer-unit {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* FEATURE PERKS GRID */
+    .perks-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+      text-align: left;
+    }
+
+    .perk-card {
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid var(--border-card);
+      border-radius: var(--radius-md);
+      padding: 18px 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      transition: all 0.25s ease;
+    }
+
+    .perk-card:hover {
+      background: rgba(245, 158, 11, 0.06);
+      border-color: rgba(245, 158, 11, 0.35);
+      transform: translateY(-2px);
+    }
+
+    .perk-icon {
+      font-size: 1.6rem;
+      line-height: 1;
+      padding: 8px;
+      background: rgba(245, 158, 11, 0.12);
+      border-radius: 10px;
+      flex-shrink: 0;
+    }
+
+    .perk-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text-white);
+      margin-bottom: 4px;
+    }
+
+    .perk-desc {
+      font-size: 0.8rem;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    /* CALL TO ACTION BUTTON */
+    .cta-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn-main-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 1.25rem;
+      font-weight: 800;
+      padding: 18px 46px;
+      border-radius: 50px;
+      box-shadow: 0 10px 35px -5px rgba(239, 68, 68, 0.6), 0 0 25px rgba(245, 158, 11, 0.4);
+      transition: all 0.25s ease;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-main-cta:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 15px 45px -5px rgba(239, 68, 68, 0.75), 0 0 35px rgba(245, 158, 11, 0.6);
+      filter: brightness(1.08);
+    }
+
+    .btn-main-cta:active {
+      transform: translateY(-1px);
+    }
+
+    .cta-subtext {
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+
+    .cta-subtext a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+
+    .cta-subtext a:hover {
+      text-decoration: underline;
+    }
+
+    /* FOOTER */
+    .festive-footer {
+      margin-top: 32px;
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .festive-footer a {
+      color: var(--gold-light);
+      text-decoration: none;
+    }
+
+    /* KEYFRAME ANIMATIONS */
+    @keyframes pulseGlow {
+      0% { transform: translateX(-50%) scale(0.9); opacity: 0.8; }
+      100% { transform: translateX(-50%) scale(1.15); opacity: 1; }
+    }
+
+    @keyframes floatBadge {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-4px); }
+    }
+
+    @keyframes flicker {
+      0% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
+      50% { transform: scale(1.08) rotate(1deg); opacity: 1; filter: drop-shadow(0 0 16px #ffbe0b); }
+      100% { transform: scale(0.96) rotate(-0.5deg); opacity: 0.9; }
+    }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+      body {
+        padding: 16px 10px;
+      }
+
+      .festive-card {
+        padding: 30px 18px;
+        border-radius: 18px;
+      }
+
+      .festival-title {
+        font-size: 2.1rem;
+      }
+
+      .discount-big-text {
+        font-size: 4rem;
+      }
+
+      .discount-label {
+        font-size: 1rem;
+        padding: 5px 18px;
+      }
+
+      .btn-main-cta {
+        font-size: 1.1rem;
+        padding: 16px 28px;
+        width: 100%;
+      }
+
+      .timer-grid {
+        gap: 8px;
+      }
+
+      .timer-block {
+        min-width: 65px;
+        padding: 10px 6px;
+      }
+
+      .timer-num {
+        font-size: 1.5rem;
+      }
+
+      .coupon-interactive-row {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .coupon-code-pill {
+        width: 100%;
+        text-align: center;
+        font-size: 1.35rem;
+      }
+
+      .btn-copy {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Glow & Sparkles -->
+  <div class="ambient-glow">
+    <div class="glow-orb-1"></div>
+    <div class="glow-orb-2"></div>
+    <div class="glow-orb-3"></div>
+  </div>
+  <canvas id="sparkleCanvas"></canvas>
+
+  <div class="festive-wrapper">
+    <div class="festive-card">
+
+      <!-- Top Festival Announcement Pill -->
+      <div class="top-badge-row">
+        <span class="diya-icon">🪔</span>
+        <span>Festive Season Special Offer</span>
+        <span class="diya-icon">🪔</span>
+      </div>
+
+      <!-- Festive Glowing Diyas Graphic -->
+      <div class="festive-diya-container">
+        <!-- Left SVG Diya -->
+        <svg class="diya-svg left" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="flame-animation" d="M50 8C50 8 38 28 38 42C38 52 44 58 50 58C56 58 62 52 62 42C62 28 50 8 50 8Z" fill="url(#flameGrad)" />
+          <ellipse cx="50" cy="46" rx="6" ry="10" fill="#fff" opacity="0.8" />
+          <path d="M15 62C15 62 25 85 50 85C75 85 85 62 85 62C85 62 70 70 50 70C30 70 15 62 15 62Z" fill="url(#goldGrad)" stroke="#ffd700" stroke-width="2" />
+          <path d="M50 70C65 70 78 65 85 62C75 78 55 80 50 80C45 80 25 78 15 62C22 65 35 70 50 70Z" fill="#b45309" opacity="0.4" />
+          <defs>
+            <radialGradient id="flameGrad" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#fff5cc" />
+              <stop offset="35%" stop-color="#fbbf24" />
+              <stop offset="70%" stop-color="#ef4444" />
+              <stop offset="100%" stop-color="#b91c1c" />
+            </radialGradient>
+            <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffd700" />
+              <stop offset="50%" stop-color="#f59e0b" />
+              <stop offset="100%" stop-color="#b45309" />
+            </linearGradient>
+          </defs>
+        </svg>
+
+        <!-- Channel Brand -->
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <span style="font-size: 1.5rem;">🔥</span>
+          <span style="font-weight: 800; letter-spacing: 1.5px; font-size: 1.1rem; color: #ffd700;">FIRE IN INDIA</span>
+        </div>
+
+        <!-- Right SVG Diya -->
+        <svg class="diya-svg" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path class="flame-animation" d="M50 8C50 8 38 28 38 42C38 52 44 58 50 58C56 58 62 52 62 42C62 28 50 8 50 8Z" fill="url(#flameGrad2)" />
+          <ellipse cx="50" cy="46" rx="6" ry="10" fill="#fff" opacity="0.8" />
+          <path d="M15 62C15 62 25 85 50 85C75 85 85 62 85 62C85 62 70 70 50 70C30 70 15 62 15 62Z" fill="url(#goldGrad2)" stroke="#ffd700" stroke-width="2" />
+          <defs>
+            <radialGradient id="flameGrad2" cx="50%" cy="40%" r="50%">
+              <stop offset="0%" stop-color="#fff5cc" />
+              <stop offset="35%" stop-color="#fbbf24" />
+              <stop offset="70%" stop-color="#ef4444" />
+              <stop offset="100%" stop-color="#b91c1c" />
+            </radialGradient>
+            <linearGradient id="goldGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#ffd700" />
+              <stop offset="50%" stop-color="#f59e0b" />
+              <stop offset="100%" stop-color="#b45309" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- Main Headline -->
+      <h1 class="festival-title">FESTIVE DHAMAKA SALE</h1>
+      
+      <p class="festival-subtitle">
+        Accelerate your path to Financial Independence! For a limited time during this festive celebration, unlock our 
+        <strong>Master Trading Strategy Sheets, Calculators & Algorithms</strong> at a flat celebratory discount.
+      </p>
+
+      <!-- 20% DISCOUNT SHOWCASE -->
+      <div class="discount-showcase">
+        <div class="discount-big-text">20% OFF</div>
+        <div class="discount-label">FLAT DISCOUNT ON ALL STRATEGIES</div>
+      </div>
+
+      <!-- COUPON BOX WITH 1-CLICK COPY -->
+      <div class="coupon-section">
+        <div class="coupon-title">🎁 USE COUPON CODE AT CHECKOUT</div>
+        <div class="coupon-interactive-row">
+          <div id="couponCode" class="coupon-code-pill">FESTIVE20</div>
+          <button id="copyBtn" class="btn-copy" onclick="copyCouponCode()" aria-label="Copy Coupon Code">
+            <span id="copyIcon">📋</span>
+            <span id="copyBtnText">Copy Code</span>
+          </button>
+        </div>
+        <div id="copiedToast" class="copied-toast">
+          ✓ Coupon code copied to clipboard!
+        </div>
+      </div>
+
+      <!-- COUNTDOWN TIMER -->
+      <div class="timer-container">
+        <div class="timer-label">⏰ Limited Period Festive Offer Ends In:</div>
+        <div class="timer-grid">
+          <div class="timer-block">
+            <div id="timerDays" class="timer-num">04</div>
+            <div class="timer-unit">Days</div>
+          </div>
+          <div class="timer-block">
+            <div id="timerHours" class="timer-num">18</div>
+            <div class="timer-unit">Hours</div>
+          </div>
+          <div class="timer-block">
+            <div id="timerMins" class="timer-num">35</div>
+            <div class="timer-unit">Minutes</div>
+          </div>
+          <div class="timer-block">
+            <div id="timerSecs" class="timer-num">50</div>
+            <div class="timer-unit">Seconds</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT YOU GET / PERKS -->
+      <div class="perks-grid">
+        <div class="perk-card">
+          <div class="perk-icon">📈</div>
+          <div>
+            <div class="perk-title">Proven 39+ Systems</div>
+            <p class="perk-desc">SST 2.0, ETF Shops, Turtle Breakout, PKP & Multi-asset Swing models.</p>
+          </div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon">📊</div>
+          <div>
+            <div class="perk-title">Automated Sheets</div>
+            <p class="perk-desc">Google Sheet calculators with live CMP, entry/exit levels & position sizing.</p>
+          </div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon">💎</div>
+          <div>
+            <div class="perk-title">Lifetime Access</div>
+            <p class="perk-desc">One-time purchase gives you lifetime access and all future version upgrades.</p>
+          </div>
+        </div>
+        <div class="perk-card">
+          <div class="perk-icon">⚡</div>
+          <div>
+            <div class="perk-title">Instant Delivery</div>
+            <p class="perk-desc">Direct access link instantly sent to your email after checkout.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- CALL TO ACTION -->
+      <div class="cta-container">
+        <a href="https://fireinindia2021.odoo.com/shop" target="_blank" rel="noopener" class="btn-main-cta">
+          <span>🛒 Claim 20% OFF — Visit Store</span>
+          <span>➔</span>
+        </a>
+        <div class="cta-subtext">
+          Have queries? Email us at <a href="mailto:fireinindia2021@gmail.com">fireinindia2021@gmail.com</a>
+        </div>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="festive-footer">
+        <span>© FIRE in India</span>
+        <span>•</span>
+        <a href="https://www.youtube.com/@FIREinIndia" target="_blank" rel="noopener">📺 YouTube Channel</a>
+        <span>•</span>
+        <a href="https://fireinindia2021.odoo.com/shop" target="_blank" rel="noopener">🛍️ Strategy Store</a>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Interactive JavaScript: Sparkles, Countdown Timer & Clipboard Copy -->
+  <script>
+    // 1. Copy Coupon Code with visual feedback
+    function copyCouponCode() {
+      const code = document.getElementById('couponCode').innerText.trim();
+      navigator.clipboard.writeText(code).then(() => {
+        const copyBtnText = document.getElementById('copyBtnText');
+        const copyIcon = document.getElementById('copyIcon');
+        const toast = document.getElementById('copiedToast');
+        
+        copyBtnText.innerText = 'Copied!';
+        copyIcon.innerText = '✓';
+        toast.style.display = 'flex';
+
+        setTimeout(() => {
+          copyBtnText.innerText = 'Copy Code';
+          copyIcon.innerText = '📋';
+          toast.style.display = 'none';
+        }, 3000);
+      }).catch(err => {
+        // Fallback for older browsers
+        const tempInput = document.createElement('input');
+        tempInput.value = code;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+
+        const copyBtnText = document.getElementById('copyBtnText');
+        copyBtnText.innerText = 'Copied!';
+        setTimeout(() => { copyBtnText.innerText = 'Copy Code'; }, 3000);
+      });
+    }
+
+    // 2. Dynamic Countdown Timer (Counts down 5 days from first visit, persists in localStorage)
+    function initCountdown() {
+      const storageKey = 'festive_offer_end_time';
+      let endTime = localStorage.getItem(storageKey);
+
+      if (!endTime) {
+        // Default: 5 days from now
+        endTime = Date.now() + (5 * 24 * 60 * 60 * 1000);
+        localStorage.setItem(storageKey, endTime);
+      } else {
+        endTime = parseInt(endTime, 10);
+        // If expired, reset to 48 hours for continuous urgency
+        if (Date.now() > endTime) {
+          endTime = Date.now() + (2 * 24 * 60 * 60 * 1000);
+          localStorage.setItem(storageKey, endTime);
+        }
+      }
+
+      function updateClock() {
+        const now = Date.now();
+        const diff = Math.max(0, endTime - now);
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const mins = Math.floor((diff / (1000 * 60)) % 60);
+        const secs = Math.floor((diff / 1000) % 60);
+
+        document.getElementById('timerDays').innerText = String(days).padStart(2, '0');
+        document.getElementById('timerHours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('timerMins').innerText = String(mins).padStart(2, '0');
+        document.getElementById('timerSecs').innerText = String(secs).padStart(2, '0');
+      }
+
+      updateClock();
+      setInterval(updateClock, 1000);
+    }
+    initCountdown();
+
+    // 3. Lightweight Golden Canvas Sparkles (Silky 60fps)
+    (function initSparkles() {
+      const canvas = document.getElementById('sparkleCanvas');
+      const ctx = canvas.getContext('2d');
+      let width = canvas.width = window.innerWidth;
+      let height = canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const particles = [];
+      const particleCount = Math.min(width > 768 ? 45 : 25, 50);
+
+      class Sparkle {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.size = Math.random() * 2.5 + 0.8;
+          this.speedY = -(Math.random() * 0.6 + 0.2);
+          this.speedX = (Math.random() - 0.5) * 0.4;
+          this.opacity = Math.random() * 0.7 + 0.3;
+          this.hue = Math.random() > 0.4 ? 45 : 25; // Gold or warm ember
+          this.fade = Math.random() * 0.01 + 0.005;
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX;
+          this.opacity -= this.fade;
+          if (this.y < 0 || this.opacity <= 0) {
+            this.reset();
+            this.y = height + 10;
+          }
+        }
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = `hsla(${this.hue}, 100%, 65%, ${this.opacity})`;
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = `hsla(${this.hue}, 100%, 50%, 0.8)`;
+          ctx.fill();
+        }
+      }
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push(new Sparkle());
+      }
+
+      function loop() {
+        ctx.clearRect(0, 0, width, height);
+        particles.forEach(p => {
+          p.update();
+          p.draw();
+        });
+        requestAnimationFrame(loop);
+      }
+      loop();
+    })();
+  </script>
+</body>
+</html>
