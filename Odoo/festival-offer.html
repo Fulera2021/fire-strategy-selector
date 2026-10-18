@@ -376,53 +376,6 @@
       letter-spacing: 1px;
     }
 
-    /* FEATURE PERKS GRID */
-    .perks-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 16px;
-      margin-bottom: 40px;
-      text-align: left;
-    }
-
-    .perk-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid var(--border-card);
-      border-radius: var(--radius-md);
-      padding: 18px 16px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      transition: all 0.25s ease;
-    }
-
-    .perk-card:hover {
-      background: rgba(245, 158, 11, 0.06);
-      border-color: rgba(245, 158, 11, 0.35);
-      transform: translateY(-2px);
-    }
-
-    .perk-icon {
-      font-size: 1.6rem;
-      line-height: 1;
-      padding: 8px;
-      background: rgba(245, 158, 11, 0.12);
-      border-radius: 10px;
-      flex-shrink: 0;
-    }
-
-    .perk-title {
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--text-white);
-      margin-bottom: 4px;
-    }
-
-    .perk-desc {
-      font-size: 0.8rem;
-      color: var(--text-dim);
-      line-height: 1.4;
-    }
 
     /* CALL TO ACTION BUTTON */
     .cta-container {
@@ -669,7 +622,7 @@
 
       <!-- COUNTDOWN TIMER -->
       <div class="timer-container">
-        <div class="timer-label">⏰ Limited Period Festive Offer Ends In:</div>
+        <div class="timer-label">⏰ Festive Offer Valid Till 15 Nov 2026 (Midnight):</div>
         <div class="timer-grid">
           <div class="timer-block">
             <div id="timerDays" class="timer-num">04</div>
@@ -690,37 +643,7 @@
         </div>
       </div>
 
-      <!-- WHAT YOU GET / PERKS -->
-      <div class="perks-grid">
-        <div class="perk-card">
-          <div class="perk-icon">📈</div>
-          <div>
-            <div class="perk-title">Proven 39+ Systems</div>
-            <p class="perk-desc">SST 2.0, ETF Shops, Turtle Breakout, PKP & Multi-asset Swing models.</p>
-          </div>
-        </div>
-        <div class="perk-card">
-          <div class="perk-icon">📊</div>
-          <div>
-            <div class="perk-title">Automated Sheets</div>
-            <p class="perk-desc">Google Sheet calculators with live CMP, entry/exit levels & position sizing.</p>
-          </div>
-        </div>
-        <div class="perk-card">
-          <div class="perk-icon">💎</div>
-          <div>
-            <div class="perk-title">Lifetime Access</div>
-            <p class="perk-desc">One-time purchase gives you lifetime access and all future version upgrades.</p>
-          </div>
-        </div>
-        <div class="perk-card">
-          <div class="perk-icon">⚡</div>
-          <div>
-            <div class="perk-title">Instant Delivery</div>
-            <p class="perk-desc">Direct access link instantly sent to your email after checkout.</p>
-          </div>
-        </div>
-      </div>
+
 
       <!-- CALL TO ACTION -->
       <div class="cta-container">
@@ -779,27 +702,23 @@
       });
     }
 
-    // 2. Dynamic Countdown Timer (Counts down 5 days from first visit, persists in localStorage)
+    // 2. Countdown Timer Target: 15 November 2026 Midnight (23:59:59 IST)
     function initCountdown() {
-      const storageKey = 'festive_offer_end_time';
-      let endTime = localStorage.getItem(storageKey);
-
-      if (!endTime) {
-        // Default: 5 days from now
-        endTime = Date.now() + (5 * 24 * 60 * 60 * 1000);
-        localStorage.setItem(storageKey, endTime);
-      } else {
-        endTime = parseInt(endTime, 10);
-        // If expired, reset to 48 hours for continuous urgency
-        if (Date.now() > endTime) {
-          endTime = Date.now() + (2 * 24 * 60 * 60 * 1000);
-          localStorage.setItem(storageKey, endTime);
-        }
-      }
+      const targetDate = new Date('2026-11-15T23:59:59+05:30').getTime();
 
       function updateClock() {
         const now = Date.now();
-        const diff = Math.max(0, endTime - now);
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('timerDays').innerText = '00';
+          document.getElementById('timerHours').innerText = '00';
+          document.getElementById('timerMins').innerText = '00';
+          document.getElementById('timerSecs').innerText = '00';
+          const label = document.querySelector('.timer-label');
+          if (label) label.innerText = '⚠️ Festive Offer Expired';
+          return;
+        }
 
         const days = Math.floor(diff / (1000 * 60 * 60 * 24));
         const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
