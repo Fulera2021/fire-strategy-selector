@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FIRE in India — Interactive Strategy Finder & Strategy Catalog</title>
+  <meta name="description" content="Discover the best stock market, ETF, and swing trading strategy for your capital, screen time, and risk appetite. Powered by FIRE in India.">
+  <meta name="keywords" content="FIRE in India, Stock Market Strategy, SST 2.0, ETF Shop, PKJ, Swing Trading, Options Trading, Financial Independence">
+  
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="FIRE in India — Strategy Selector">
+  <meta property="og:description" content="Find the best trading & investing strategy tailored specifically for your routine and capital in 30 seconds.">
+  <meta property="og:type" content="website">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app" class="app-wrapper">
+
+    <!-- Top Header -->
+    <header class="app-header">
+      <div class="header-content">
+        <div class="brand-row">
+          <div class="brand-badge">
+            <span class="flame-icon">🔥</span>
+            <span class="brand-title">FIRE in India</span>
+          </div>
+          <button id="openEmbedBtn" class="btn-ghost-sm" title="Embed on your website">
+            <span class="btn-icon">&lt;/&gt;</span>
+            <span class="btn-text">Embed Widget</span>
+          </button>
+        </div>
+
+        <h1 class="main-headline">Strategy Selection Engine</h1>
+        <p class="sub-headline">
+          Stop getting overwhelmed by 39 different systems. Answer 3 quick questions to discover the 
+          <strong>exact strategy</strong> tailored to your capital, available screen time, and financial goals.
+        </p>
+
+        <!-- Navigation Mode Tabs -->
+        <nav class="mode-tabs-container" aria-label="Mode selector">
+          <button id="quizModeBtn" class="mode-tab active" data-mode="quiz">
+            <span class="tab-icon">🎯</span>
+            <span class="tab-label">Find My Strategy (30s Quiz)</span>
+          </button>
+          <button id="catalogModeBtn" class="mode-tab" data-mode="catalog">
+            <span class="tab-icon">📚</span>
+            <span class="tab-label">Browse All 39 Strategies</span>
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="app-main">
+
+      <!-- ========================================== -->
+      <!-- VIEW 1: GUIDED QUIZ VIEW                   -->
+      <!-- ========================================== -->
+      <section id="quizView" class="view-section active-view">
+        <div class="quiz-card-container">
+          
+          <!-- Step Progress Indicator -->
+          <div class="progress-bar-container">
+            <div class="progress-info">
+              <span id="quizStepLabel" class="step-label">Step 1 of 3</span>
+              <span id="quizStepPercent" class="step-percent">33%</span>
+            </div>
+            <div class="progress-track">
+              <div id="quizProgressBar" class="progress-fill" style="width: 33%;"></div>
+            </div>
+          </div>
+
+          <!-- Wizard Form Container -->
+          <form id="quizForm" class="quiz-form" onsubmit="return false;">
+            
+            <!-- STEP 1: Capital -->
+            <div id="quizStep1" class="quiz-step active-step">
+              <div class="question-header">
+                <span class="q-number">01</span>
+                <div>
+                  <h2 class="question-title">What is your available capital for this strategy?</h2>
+                  <p class="question-desc">Select the capital bucket you want to deploy comfortably without over-leveraging.</p>
+                </div>
+              </div>
+
+              <div class="options-grid" role="radiogroup" aria-label="Capital options">
+                <label class="option-tile" data-val="1 Low">
+                  <input type="radio" name="capital" value="1 Low" class="sr-only">
+                  <div class="tile-icon-box">🌱</div>
+                  <div class="tile-body">
+                    <div class="tile-title">₹10,000 – ₹50,000</div>
+                    <div class="tile-tag tier-low">Tier 1: Low Capital</div>
+                    <p class="tile-hint">Ideal for beginners, SIP building, and testing systems safely.</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="2 Medium">
+                  <input type="radio" name="capital" value="2 Medium" class="sr-only">
+                  <div class="tile-icon-box">🌿</div>
+                  <div class="tile-body">
+                    <div class="tile-title">₹50,000 – ₹1,00,000</div>
+                    <div class="tile-tag tier-med">Tier 2: Medium Capital</div>
+                    <p class="tile-hint">Great for multi-ETF shops, regular SWP plans, and gold momentum.</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="3 High">
+                  <input type="radio" name="capital" value="3 High" class="sr-only">
+                  <div class="tile-icon-box">🚀</div>
+                  <div class="tile-body">
+                    <div class="tile-title">₹1,00,000 – ₹5,00,000</div>
+                    <div class="tile-tag tier-high">Tier 3: High Capital</div>
+                    <p class="tile-hint">Active stock swing trading (SST 2.0, BLSH, Turtle Breakouts).</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="4 Highest">
+                  <input type="radio" name="capital" value="4 Highest" class="sr-only">
+                  <div class="tile-icon-box">👑</div>
+                  <div class="tile-body">
+                    <div class="tile-title">₹5,00,000+</div>
+                    <div class="tile-tag tier-highest">Tier 4: Highest Capital</div>
+                    <p class="tile-hint">SOLAR PKP, Virtual House, and Covered Call income strategies.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- STEP 2: Time / Screen Availability -->
+            <div id="quizStep2" class="quiz-step">
+              <div class="question-header">
+                <span class="q-number">02</span>
+                <div>
+                  <h2 class="question-title">How much screen time can you commit?</h2>
+                  <p class="question-desc">Pick what genuinely aligns with your profession and daily lifestyle.</p>
+                </div>
+              </div>
+
+              <div class="options-grid" role="radiogroup" aria-label="Frequency options">
+                <label class="option-tile" data-val="Daily">
+                  <input type="radio" name="frequency" value="Daily" class="sr-only">
+                  <div class="tile-icon-box">⚡</div>
+                  <div class="tile-body">
+                    <div class="tile-title">Daily (10–15 mins at EOD / 3:15 PM)</div>
+                    <div class="tile-tag freq-daily">Active Daily Check</div>
+                    <p class="tile-hint">Quick end-of-day order placement for swing trading and daily ETF shops.</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="Weekly">
+                  <input type="radio" name="frequency" value="Weekly" class="sr-only">
+                  <div class="tile-icon-box">📅</div>
+                  <div class="tile-body">
+                    <div class="tile-title">Weekly / Weekend (1 hour on weekend)</div>
+                    <div class="tile-tag freq-weekly">Weekly Routine</div>
+                    <p class="tile-hint">Review weekly candle breakouts and rotational ETF tranches on Saturday/Sunday.</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="Monthly">
+                  <input type="radio" name="frequency" value="Monthly" class="sr-only">
+                  <div class="tile-icon-box">☕</div>
+                  <div class="tile-body">
+                    <div class="tile-title">Monthly / Hands-Off (10 mins/month)</div>
+                    <div class="tile-tag freq-monthly">Zero Daily Screen Time</div>
+                    <p class="tile-hint">Automated Value SIPs, PKJ compounding trees, and REIT dividends.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- STEP 3: Asset Preference & Risk Appetite -->
+            <div id="quizStep3" class="quiz-step">
+              <div class="question-header">
+                <span class="q-number">03</span>
+                <div>
+                  <h2 class="question-title">What asset type or risk style do you prefer?</h2>
+                  <p class="question-desc">Do you prefer the safety of diversified index ETFs, direct stocks, or option selling?</p>
+                </div>
+              </div>
+
+              <div class="options-grid" role="radiogroup" aria-label="Asset options">
+                <label class="option-tile" data-val="ETFs">
+                  <input type="radio" name="asset" value="ETFs" class="sr-only">
+                  <div class="tile-icon-box">🛡️</div>
+                  <div class="tile-body">
+                    <div class="tile-title">Safe & Diversified (ETFs & Gold)</div>
+                    <div class="tile-tag asset-etf">Zero Company Risk</div>
+                    <p class="tile-hint">Index baskets, Gold, Silver, and Sector ETFs with built-in diversification.</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="Stocks">
+                  <input type="radio" name="asset" value="Stocks" class="sr-only">
+                  <div class="tile-icon-box">📈</div>
+                  <div class="tile-body">
+                    <div class="tile-title">Direct Stocks (Nifty 50 / 100)</div>
+                    <div class="tile-tag asset-stock">High Alpha & Swing Profits</div>
+                    <p class="tile-hint">Targeting fast 6%–10% gains on individual quality stock setups.</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="Options">
+                  <input type="radio" name="asset" value="Options" class="sr-only">
+                  <div class="tile-icon-box">💰</div>
+                  <div class="tile-body">
+                    <div class="tile-title">Options / Regular Monthly Cash Flow</div>
+                    <div class="tile-tag asset-options">Cash Flow Generation</div>
+                    <p class="tile-hint">Covered Calls and Cash-Secured Puts for steady virtual rent.</p>
+                  </div>
+                </label>
+
+                <label class="option-tile" data-val="Any">
+                  <input type="radio" name="asset" value="Any" class="sr-only">
+                  <div class="tile-icon-box">✨</div>
+                  <div class="tile-body">
+                    <div class="tile-title">Open to Any / Best Overall Match</div>
+                    <div class="tile-tag asset-any">All Asset Types</div>
+                    <p class="tile-hint">Show me the absolute highest recommended system for my capital & routine.</p>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Quiz Bottom Action Bar -->
+            <div class="quiz-nav-row">
+              <button type="button" id="quizPrevBtn" class="btn-secondary" style="visibility: hidden;">
+                ← Back
+              </button>
+              <div class="quiz-nav-status">
+                <span id="quizSelectionPrompt">Please select an option to continue</span>
+              </div>
+              <button type="button" id="quizNextBtn" class="btn-primary" disabled>
+                Next Step →
+              </button>
+              <button type="button" id="quizSubmitBtn" class="btn-success" style="display: none;" disabled>
+                Reveal My Strategies 🎯
+              </button>
+            </div>
+
+          </form>
+
+          <!-- Quiz Results Container (Populated dynamically) -->
+          <div id="quizResultsContainer" class="quiz-results-container" style="display: none;">
+            <div class="results-header-banner">
+              <div class="banner-badge">🎯 Top Personalized Matches</div>
+              <h2 id="resultsTitle" class="results-title">Your Recommended Strategies</h2>
+              <p id="resultsPersonaText" class="results-persona"></p>
+            </div>
+
+            <div id="matchedCardsGrid" class="cards-grid">
+              <!-- Matched cards injected here -->
+            </div>
+
+            <div class="results-actions-row">
+              <button id="retakeQuizBtn" class="btn-secondary">
+                🔄 Retake Quiz
+              </button>
+              <button id="viewAllFromResultsBtn" class="btn-primary">
+                📚 Explore All 39 Strategies
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: ALL STRATEGIES CATALOG VIEW        -->
+      <!-- ========================================== -->
+      <section id="catalogView" class="view-section">
+        
+        <!-- Controls & Filter Bar -->
+        <div class="catalog-controls-card">
+          
+          <!-- Search Row -->
+          <div class="search-input-wrapper">
+            <span class="search-icon">🔍</span>
+            <input 
+              type="text" 
+              id="strategySearchInput" 
+              class="search-input" 
+              placeholder="Search strategies by name, indicator, or rules (e.g., 'SST 2.0', 'ETF Shop', '20 DMA', 'Turtle')..."
+              autocomplete="off"
+            >
+            <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">×</button>
+          </div>
+
+          <!-- Filter Pills Sections -->
+          <div class="filters-group">
+            
+            <!-- Capital Filter -->
+            <div class="filter-row">
+              <span class="filter-label">Capital:</span>
+              <div class="filter-pills" data-filter-type="capital">
+                <button class="pill active" data-value="all">All Capital</button>
+                <button class="pill" data-value="1 Low">1 Low (₹10k–50k)</button>
+                <button class="pill" data-value="2 Medium">2 Med (₹50k–1L)</button>
+                <button class="pill" data-value="3 High">3 High (₹1L–5L)</button>
+                <button class="pill" data-value="4 Highest">4 Highest (₹5L+)</button>
+              </div>
+            </div>
+
+            <!-- Asset Type Filter -->
+            <div class="filter-row">
+              <span class="filter-label">Asset:</span>
+              <div class="filter-pills" data-filter-type="asset">
+                <button class="pill active" data-value="all">All Assets</button>
+                <button class="pill" data-value="ETFs">ETFs & Gold</button>
+                <button class="pill" data-value="Stocks">Direct Stocks</button>
+                <button class="pill" data-value="MFs">Mutual Funds</button>
+                <button class="pill" data-value="Options">Options / Cash Flow</button>
+              </div>
+            </div>
+
+            <!-- Frequency Filter -->
+            <div class="filter-row">
+              <span class="filter-label">Frequency:</span>
+              <div class="filter-pills" data-filter-type="frequency">
+                <button class="pill active" data-value="all">All Frequencies</button>
+                <button class="pill" data-value="Daily">Daily EOD</button>
+                <button class="pill" data-value="Weekly">Weekly</button>
+                <button class="pill" data-value="Monthly">Monthly / Hands-Off</button>
+              </div>
+            </div>
+
+            <!-- Free vs Premium Filter -->
+            <div class="filter-row">
+              <span class="filter-label">Access:</span>
+              <div class="filter-pills" data-filter-type="pricing">
+                <button class="pill active" data-value="all">All Sheets</button>
+                <button class="pill" data-value="free">📄 Free Templates</button>
+                <button class="pill" data-value="paid">💎 Premium Sheets</button>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Results Summary Bar -->
+          <div class="catalog-summary-bar">
+            <span id="catalogCountDisplay" class="count-display">Showing 39 of 39 strategies</span>
+            <button id="resetAllFiltersBtn" class="btn-link" style="display: none;">Reset Filters</button>
+          </div>
+
+        </div>
+
+        <!-- Strategy Cards Catalog Grid -->
+        <div id="catalogGrid" class="cards-grid">
+          <!-- Cards injected via app.js -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="catalogEmptyState" class="empty-state" style="display: none;">
+          <div class="empty-icon">🔎</div>
+          <h3>No strategies match your active filters</h3>
+          <p>Try resetting the search keyword or expanding your capital / frequency criteria.</p>
+          <button id="emptyStateResetBtn" class="btn-primary">Reset All Filters</button>
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+      <div class="footer-content">
+        <p class="disclaimer-text">
+          ⚠️ <strong>Disclaimer:</strong> This tool is created for educational and community analysis purposes. 
+          The creator is not a SEBI-registered financial advisor. Please practice risk management and paper-trade 
+          before committing real capital.
+        </p>
+        <div class="footer-links">
+          <a href="https://www.youtube.com/@FIREinIndia" target="_blank" rel="noopener" class="footer-link">
+            📺 FIRE in India YouTube
+          </a>
+          <span class="footer-dot">•</span>
+          <a href="https://docs.google.com/spreadsheets/d/1on7k-p7IqkuRjWfMcwTAMi44dCbT22rppkdYKEx8e2c/edit?gid=747867047#gid=747867047&fvid=619108691" target="_blank" rel="noopener" class="footer-link">
+            📊 View Master Google Sheet
+          </a>
+          <span class="footer-dot">•</span>
+          <a href="https://fireinindia2021.odoo.com/shop" target="_blank" rel="noopener" class="footer-link">
+            🛒 Strategy Store
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ========================================== -->
+    <!-- MODAL: EMBED WIDGET CODE                   -->
+    <!-- ========================================== -->
+    <div id="embedModal" class="modal-backdrop" aria-hidden="true" style="display: none;">
+      <div class="modal-dialog">
+        <div class="modal-header">
+          <div class="modal-title-row">
+            <span class="modal-icon">&lt;/&gt;</span>
+            <h3 class="modal-title">Embed Strategy Selector</h3>
+          </div>
+          <button id="closeEmbedModalBtn" class="modal-close-btn" aria-label="Close modal">×</button>
+        </div>
+        <div class="modal-body">
+          <p class="modal-desc">
+            Copy and paste this clean HTML snippet into your Odoo website, WordPress, or blog to let your subscribers use the Strategy Selector directly on your site.
+          </p>
+          
+          <div class="code-snippet-box">
+            <textarea id="embedCodeSnippet" class="code-textarea" readonly rows="4"></textarea>
+          </div>
+
+          <div class="embed-instructions">
+            <h4>How to embed in Odoo:</h4>
+            <ol>
+              <li>Go to your Odoo website editor on <code>fireinindia2021.odoo.com</code>.</li>
+              <li>Drag and drop the <strong>"Embed Code / HTML"</strong> building block onto your page.</li>
+              <li>Paste this snippet and save the page.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button id="copyEmbedCodeBtn" class="btn-success">
+            📋 Copy Embed Code
+          </button>
+          <button id="dismissEmbedModalBtn" class="btn-secondary">
+            Done
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Toast Notification Container -->
+    <div id="toastNotification" class="toast-container" aria-live="polite"></div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
